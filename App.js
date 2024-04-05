@@ -12,10 +12,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Calendar" component={CalendarScreen} />
-        <Stack.Screen name="Events" component={EventScreen} />
-        <Stack.Screen name='DayEvents' component={DayEventsScreen}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Calendar" component={CalendarScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Events" component={EventScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='DayEvents' component={DayEventsScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

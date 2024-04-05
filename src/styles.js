@@ -7,6 +7,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
   },
+  container1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    width: '90%',
+    height: '90%'
+  },
   label: {
     fontSize: 16,
     marginBottom: 5,

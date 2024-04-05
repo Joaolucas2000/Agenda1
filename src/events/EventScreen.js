@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput, Button, Picker, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import styles from '../styles';
 
 const EventScreen = () => {
   const navigation = useNavigation();
-  const [eventDayValue, setEventDayValue] = useState('');
-  const [eventMonthValue, setEventMonthValue] = useState('');
+  const route = useRoute();
+  const { day } = route.params || {}; // Recebendo o dia como parâmetro de navegação
   const [eventYearValue, setEventYearValue] = useState('');
+  const [eventMonthValue, setEventMonthValue] = useState('');
+  const [eventDayValue, setEventDayValue] = useState('');
   const [repeatType, setRepeatType] = useState('');
   const [eventStartTime, setEventStartTime] = useState('');
   const [eventEndTime, setEventEndTime] = useState('');
   const [eventColor, setEventColor] = useState('#00FF00');
   const [eventTitle, setEventTitle] = useState('');
   const [eventDuration, setEventDuration] = useState('');
+
+  useEffect(() => {
+    if (day) {
+      const [year, month, dayValue] = day.split('-');
+      setEventYearValue(year);
+      setEventMonthValue(month);
+      setEventDayValue(dayValue);
+    }
+  }, [day]);
 
   const handleColorChange = (color) => {
     setEventColor(color);
@@ -151,6 +162,7 @@ const EventScreen = () => {
         <Picker.Item label="Verde" value="#00FF00" />
       </Picker>
       <Button title="Adicionar Evento" onPress={handleAddEvent} />
+      <Button title="Voltar ao Calendario" onPress={() => navigation.navigate('Calendar')} />
     </View>
   );
 };

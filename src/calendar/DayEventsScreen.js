@@ -9,7 +9,7 @@ const DayEventsScreen = () => {
   const { events, selectedDay } = route.params || {};
 
   const handleAddEvent = () => {
-    navigation.navigate('Events');
+    navigation.navigate('Events', { day: selectedDay }); // Passando o dia como parâmetro de navegação
   };
 
   return (
@@ -20,6 +20,7 @@ const DayEventsScreen = () => {
           {events.map((event, index) => (
             <TouchableOpacity key={`${event.title}-${index}`} style={[styles.eventContainer, { backgroundColor: event.color }]}>
               <Text style={styles.eventTitle}>{event.title}</Text>
+              <Text style={styles.eventStartTime}>Hora de Início: {event.start_time}</Text>
             </TouchableOpacity>
           ))}
         </View>
